@@ -1,0 +1,33 @@
+<div class="text-center">
+  <h4>Project Financial Setup</h4>
+</div>
+<div class="container">
+  <div [hidden]="submitted">
+    <form (ngSubmit)="onSubmit()">
+      <div class="form-group col-md-6">
+        <label>Wall Labor Per Hour</label>
+        <input type="number" class="form-control" id="length" placeholder="">
+      </div>
+      <div class="form-group col-md-6">
+        <label>Closet Labor Per Hour</label>
+        <input type="number" class="form-control" id="length" placeholder="">
+      </div>
+      <div class="form-group col-md-6">
+        <label>Mantle Labor Per Hour</label>
+        <input type="number" class="form-control" id="length" placeholder="">
+      </div>
+      <div class="form-group col-md-6">
+        <label>Column Labor Per Hour</label>
+        <input type="number" class="form-control" id="length" placeholder="">
+      </div>
+      <div class="form-group col-md-6">
+        <label>Profit Ratio</label>
+        <input type="number" class="form-control" id="closetNum" placeholder="">
+      </div>
+      <div class="btn-group col-md-6">
+        <button type="submit" class="btn btn-success">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>
+

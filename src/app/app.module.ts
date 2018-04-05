@@ -10,8 +10,10 @@ import {CustomersComponent} from './customers/customers.component';
 import {DataService} from './data.service';
 import {CreateCustomerComponent} from './create-customer/create-customer.component';
 
-import {enableProdMode} from '@angular/core';
 import {SearchCustomersComponent} from './search-customers/search-customers.component';
+import {CreateRoomComponent} from "./room/create-room.component";
+import {FinancialSetupComponent} from "./project/setup/financial/financial-setup.component";
+import {MaterialSetupComponent} from "./project/setup/material/material-setup.component";
 
 @NgModule({
   declarations: [
@@ -19,7 +21,14 @@ import {SearchCustomersComponent} from './search-customers/search-customers.comp
     CustomerDetailsComponent,
     CustomersComponent,
     CreateCustomerComponent,
-    SearchCustomersComponent
+    SearchCustomersComponent,
+
+    // Room Modue
+    CreateRoomComponent,
+
+    // Setup Module
+    FinancialSetupComponent,
+    MaterialSetupComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -6,7 +6,7 @@
     <a class="navbar-brand" href="#">Bartlett Painting</a>
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
       <li class="nav-item">
-        <a class="nav-link" routerLink="paint/create">Create New Project</a>
+        <a class="nav-link" routerLink="paint/room/create">Create New Project</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Existing Project</a>
@@ -16,8 +16,8 @@
           Project Setup
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a routerLink="paint/create" class="dropdown-item" href="#">Painting Material Setup</a>
-          <a class="dropdown-item" href="#">Place Holder</a>
+          <a routerLink="project/material/setup" class="dropdown-item" href="#">Painting Material Setup</a>
+          <a routerLink="project/financial/setup" class="dropdown-item" href="#">Financial Setup</a>
           <a class="dropdown-item" href="#">Place Holder</a>
         </div>
       </li>
@@ -28,12 +28,5 @@
     </form>
   </div>
 </nav>
-<div style="padding: 20px;">
-	<nav>
-		<a routerLink="customer" class="btn btn-primary active" role="button" routerLinkActive="active">Rooms</a>
-		<a routerLink="add"	class="btn btn-primary active" role="button" routerLinkActive="active">Add</a>
-		<a routerLink="findbylastname"	class="btn btn-primary active" role="button" routerLinkActive="active">Search</a>
-    <button type="button" class="btn btn-primary">Primary</button>
-	</nav>
-	<router-outlet></router-outlet>
-</div>
+<br />
+<router-outlet></router-outlet>
