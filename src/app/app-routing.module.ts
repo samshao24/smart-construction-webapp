@@ -7,6 +7,7 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {FinancialSetupComponent} from "./project/setup/financial/financial-setup.component";
 import {MaterialSetupComponent} from "./project/setup/material/material-setup.component";
+import {RoomListComponent} from "./room/list/room-list.component";
 
 const routes: Routes = [
   {path: '', redirectTo: 'customer', pathMatch: 'full'},
@@ -19,6 +20,7 @@ const routes: Routes = [
   {path: 'project/material/setup', component: MaterialSetupComponent},
   // Routing to Painting Project
   {path: 'paint/room/create', component: CreateRoomComponent},
+  {path: 'paint/room/list', component: RoomListComponent},
   {path: 'customer', component: CustomersComponent},
   {path: 'add', component: CreateCustomerComponent},
   {path: 'findbylastname', component: SearchCustomersComponent},
