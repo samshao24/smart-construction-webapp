@@ -15,6 +15,8 @@ import {CreateRoomComponent} from "./room/create-room.component";
 import {FinancialSetupComponent} from "./project/setup/financial/financial-setup.component";
 import {MaterialSetupComponent} from "./project/setup/material/material-setup.component";
 import {RoomListComponent} from "./room/list/room-list.component";
+import {ProjectListComponent} from "./project/list/project-list.component";
+import {ProjectDetailComponent} from "./project/detail/project-detail.component";
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import {RoomListComponent} from "./room/list/room-list.component";
     CreateRoomComponent,
     RoomListComponent,
 
-    // Setup Module
+    // Project Module
+    ProjectListComponent,
+    ProjectDetailComponent,
     FinancialSetupComponent,
     MaterialSetupComponent
   ],

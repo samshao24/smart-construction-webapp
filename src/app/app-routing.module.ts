@@ -8,12 +8,15 @@ import {RouterModule, Routes} from '@angular/router';
 import {FinancialSetupComponent} from "./project/setup/financial/financial-setup.component";
 import {MaterialSetupComponent} from "./project/setup/material/material-setup.component";
 import {RoomListComponent} from "./room/list/room-list.component";
+import {ProjectListComponent} from "./project/list/project-list.component";
+import {ProjectDetailComponent} from "./project/detail/project-detail.component";
 
 const routes: Routes = [
   {path: '', redirectTo: 'customer', pathMatch: 'full'},
 
   // Routing to Main Project View
-  {path: 'project/all', component: CreateCustomerComponent},
+  {path: 'project/list', component: ProjectListComponent},
+  {path: 'project/detail', component: ProjectDetailComponent},
   // Routing to project financial setup view
   {path: 'project/financial/setup', component: FinancialSetupComponent},
   // Routing to Painting material setup view

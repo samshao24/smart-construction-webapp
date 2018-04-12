@@ -1,48 +1,50 @@
-
 <div class="container">
-  <div>
-    <button class="btn btn-info float-left">Back to Project</button>
-    <button routerLink="/paint/room/create" class="btn btn-success float-right">Add Room</button>
-  </div>
   <table class="table">
     <thead class="thead-light">
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">Room Type</th>
-      <th scope="col">Size</th>
-      <th scope="col">Total Cost</th>
+      <th scope="col">Type</th>
+      <th scope="col">Customer</th>
+      <th scope="col">Phone</th>
+      <th scope="col">Status</th>
+      <th scope="col">Cost</th>
       <th scope="col"></th>
     </tr>
     </thead>
     <tbody>
     <tr>
-      <th scope="row">1</th>
-      <td>Living Room</td>
-      <td>18 * 18</td>
-      <td>$8,700</td>
+      <th scope="row">Painting</th>
+      <td>Joshua Bartlett</td>
+      <td>615-968-0989</td>
+      <td>Active</td>
+      <td>$46,000</td>
       <td>
         <a routerLink="/paint/room/create" class="btn btn-primary btn-sm" href="#">Edit</a>
         <a routerLink="/paint/room/create" class="btn btn-danger btn-sm" href="#">Delete</a>
+        <a routerLink="/paint/room/list" class="btn btn-info btn-sm" href="#">Rooms</a>
       </td>
     </tr>
     <tr>
-      <th scope="row">2</th>
-      <td>Bed Room 1</td>
-      <td>12 * 12</td>
-      <td>$3,600</td>
+      <th scope="row">Painting</th>
+      <td>Yun Liu</td>
+      <td>518-968-0989</td>
+      <td>Active</td>
+      <td>$136,000</td>
       <td>
         <a routerLink="/paint/room/create" class="btn btn-primary btn-sm" href="#">Edit</a>
         <a routerLink="/paint/room/create" class="btn btn-danger btn-sm" href="#">Delete</a>
+        <a routerLink="/paint/room/list" class="btn btn-info btn-sm" href="#">Rooms</a>
       </td>
     </tr>
     <tr>
-      <th scope="row">3</th>
-      <td>Bed Room 2</td>
-      <td>14 * 14</td>
-      <td>$5,560</td>
+      <th scope="row">Painting</th>
+      <td>Samuel Shao</td>
+      <td>615-434-0009</td>
+      <td>Inactive</td>
+      <td>$45,000</td>
       <td>
         <a routerLink="/paint/room/create" class="btn btn-primary btn-sm" href="#">Edit</a>
         <a routerLink="/paint/room/create" class="btn btn-danger btn-sm" href="#">Delete</a>
+        <a routerLink="/paint/room/list" class="btn btn-info btn-sm" href="#">Rooms</a>
       </td>
     </tr>
     </tbody>
