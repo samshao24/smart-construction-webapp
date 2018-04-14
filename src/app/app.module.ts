@@ -15,6 +15,7 @@ import {CreateRoomComponent} from "./room/create-room.component";
 import {FinancialSetupComponent} from "./project/setup/financial/financial-setup.component";
 import {MaterialSetupComponent} from "./project/setup/material/material-setup.component";
 import {RoomListComponent} from "./room/list/room-list.component";
+import {ProjectDataService} from "./project/data/project-data.service";
 import {ProjectListComponent} from "./project/list/project-list.component";
 import {ProjectDetailComponent} from "./project/detail/project-detail.component";
 
@@ -42,7 +43,10 @@ import {ProjectDetailComponent} from "./project/detail/project-detail.component"
     HttpModule,
     AppRoutingModule
   ],
-  providers: [DataService],
+  providers: [
+    DataService,
+    ProjectDataService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

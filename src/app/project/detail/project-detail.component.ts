@@ -1,5 +1,5 @@
-import {Customer} from '../../customer';
-import {DataService} from '../../data.service';
+import {Project, ProjectType} from '../data/project';
+import {ProjectDataService} from '../data/project-data.service';
 import {Component, OnInit} from '@angular/core';
 import {Location} from '@angular/common';
 
@@ -10,21 +10,18 @@ import {Location} from '@angular/common';
 })
 
 export class ProjectDetailComponent implements OnInit {
-  customer = new Customer;
-  submitted = false;
-  constructor(private dataService: DataService,
+  project = new Project;
+  projectTypes: ProjectType[];
+  submitted: boolean;
+  constructor(private dataService: ProjectDataService,
     private location: Location) {}
 
   ngOnInit() {
+    this.getAllProjectType();
   }
 
-  newCustomer(): void {
-    this.submitted = false;
-    this.customer = new Customer();
-  }
-
-  private save(): void {
-    this.dataService.create(this.customer);
+  getAllProjectType() {
+    this.dataService.getProjectType().then(projectTypes => this.projectTypes = projectTypes);
   }
 
   onSubmit() {
@@ -32,7 +29,7 @@ export class ProjectDetailComponent implements OnInit {
     this.save();
   }
 
-  goBack(): void {
-    this.location.back();
+  save() {
+    this.dataService.create(this.project);
   }
 }

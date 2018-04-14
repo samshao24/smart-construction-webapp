@@ -14,6 +14,18 @@
     </tr>
     </thead>
     <tbody>
+    <tr *ngFor="let project of projects">
+      <th scope="row">{{project.type.type}}</th>
+      <td>Joshua Bartlett</td>
+      <td>615-968-0989</td>
+      <td>{{project.status}}</td>
+      <td>$46,000</td>
+      <td>
+        <a routerLink="/paint/room/create" class="btn btn-primary btn-sm" href="#">Edit</a>
+        <a routerLink="/paint/room/create" class="btn btn-danger btn-sm" href="#">Delete</a>
+        <a routerLink="/paint/room/list" class="btn btn-info btn-sm" href="#">Rooms</a>
+      </td>
+    </tr>
     <tr>
       <th scope="row">Painting</th>
       <td>Joshua Bartlett</td>

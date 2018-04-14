@@ -1,104 +1,100 @@
 <div class="container">
-  <div class="float-right">
-    <button routerLink="/project/list" class="btn btn-info">Back to Project List</button>
-    <button routerLink="/project/list" class="btn btn-success">Submit</button>
-  </div>
-  <div>
-  </div>
-  <div [hidden]="submitted">
-    <form (ngSubmit)="onSubmit()">
-      <div class="form-group">
-        <div class="form-row col-md-12">
-          <div class="col col-md-4">
-            <label for="inputState">Project Type</label>
-            <select id="inputState" class="form-control">
-              <option selected>Choose...</option>
-              <option>Painting</option>
-              <option>Place Holder</option>
-              <option>Place Holder</option>
-              <option>Place Holder</option>
-            </select>
-          </div>
-        </div>
-      </div>
-      <div class="form-group">
-        <div class="form-row col-md-8">
-          <div class="col">
-            <label for="beginDate">Begin Date</label>
-            <div class='input-group date' id='beginDate'>
-              <input type='date' class="form-control" />
-            </div>
-          </div>
-          <div class="col">
-            <label for="endDate">End Date</label>
-            <div class='input-group date' id='endDate'>
-              <input type='date' class="form-control" />
+  <form (ngSubmit)="onSubmit()">
+    <div class="float-right">
+      <button routerLink="/project/list" class="btn btn-info">Back to Project List</button>
+      <button type="submit" class="btn btn-success">Submit</button>
+    </div>
+    <div>
+    </div>
+    <div [hidden]="submitted">
+        <div class="form-group">
+          <div class="form-row col-md-12">
+            <div class="col col-md-4">
+              <label for="type">Project Type</label>
+              <select id="type" class="form-control">
+                <option selected>Choose...</option>
+                <option *ngFor="let type of projectTypes" [value]="type.id">{{type.type}}</option>
+              </select>
             </div>
           </div>
         </div>
-      </div>
-      <div class="form-group">
-        <div class="form-row col-md-8">
-          <div class="col">
-            <label for="firstName">Customer First Name</label>
-            <input type="number" class="form-control" id="firstName" placeholder="">
-          </div>
-          <div class="col">
-            <label for="lastName">Customer Last Name</label>
-            <input type="number" class="form-control" id="lastName" placeholder="">
-          </div>
-        </div>
-      </div>
-      <div class="form-group">
-        <div class="form-row col-md-8">
-          <div class="col">
-            <label for="streetAddr1">Street Address</label>
-            <input type="number" class="form-control" id="streetAddr1" placeholder="">
-          </div>
-          <div class="col">
-            <label for="aptNum">Apt No.</label>
-            <input type="number" class="form-control" id="aptNum" placeholder="">
+        <div class="form-group">
+          <div class="form-row col-md-8">
+            <div class="col">
+              <label for="beginDate">Begin Date</label>
+              <div class='input-group date' id='beginDate'>
+                <input [(ngModel)]="project.beginDate" type='date' class="form-control" />
+              </div>
+            </div>
+            <div class="col">
+              <label for="endDate">End Date</label>
+              <div class='input-group date' id='endDate'>
+                <input [(ngModel)]="project.endDate" type='date' class="form-control" />
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="form-group">
-        <div class="form-row col-md-8">
-          <div class="col">
-            <label for="streetAddr1">City</label>
-            <input type="number" class="form-control" id="city" placeholder="">
-          </div>
-          <div class="col">
-            <label for="aptNum">State</label>
-            <input type="number" class="form-control" id="state" placeholder="">
-          </div>
-        </div>
-      </div>
-      <div class="form-group">
-        <div class="form-row col-md-8">
-          <div class="col">
-            <label for="zipcode">Zip Code</label>
-            <input type="number" class="form-control" id="zipcode" placeholder="">
-          </div>
-          <div class="col">
-            <label for="zipcode">Email Address</label>
-            <input type="email" class="form-control" id="email" placeholder="xxx@email.com">
+        <div class="form-group">
+          <div class="form-row col-md-8">
+            <div class="col">
+              <label for="firstName">Customer First Name</label>
+              <input type="number" class="form-control" id="firstName" placeholder="">
+            </div>
+            <div class="col">
+              <label for="lastName">Customer Last Name</label>
+              <input type="number" class="form-control" id="lastName" placeholder="">
+            </div>
           </div>
         </div>
-      </div>
-      <div class="form-group">
-        <div class="form-row col-md-8">
-          <div class="col">
-            <label for="homePhone">Home Phone</label>
-            <input type="tel" class="form-control" id="homePhone" placeholder="">
-          </div>
-          <div class="col">
-            <label for="cellPhone">Cell Phone</label>
-            <input type="tel" class="form-control" id="cellPhone" placeholder="">
+        <div class="form-group">
+          <div class="form-row col-md-8">
+            <div class="col">
+              <label for="streetAddr1">Street Address</label>
+              <input type="number" class="form-control" id="streetAddr1" placeholder="">
+            </div>
+            <div class="col">
+              <label for="aptNum">Apt No.</label>
+              <input type="number" class="form-control" id="aptNum" placeholder="">
+            </div>
           </div>
         </div>
-      </div>
-
-    </form>
-  </div>
+        <div class="form-group">
+          <div class="form-row col-md-8">
+            <div class="col">
+              <label for="streetAddr1">City</label>
+              <input type="number" class="form-control" id="city" placeholder="">
+            </div>
+            <div class="col">
+              <label for="aptNum">State</label>
+              <input type="number" class="form-control" id="state" placeholder="">
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="form-row col-md-8">
+            <div class="col">
+              <label for="zipcode">Zip Code</label>
+              <input type="number" class="form-control" id="zipcode" placeholder="">
+            </div>
+            <div class="col">
+              <label for="zipcode">Email Address</label>
+              <input type="email" class="form-control" id="email" placeholder="xxx@email.com">
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="form-row col-md-8">
+            <div class="col">
+              <label for="homePhone">Home Phone</label>
+              <input type="tel" class="form-control" id="homePhone" placeholder="">
+            </div>
+            <div class="col">
+              <label for="cellPhone">Cell Phone</label>
+              <input type="tel" class="form-control" id="cellPhone" placeholder="">
+            </div>
+          </div>
+        </div>
+    </div>
+  </form>
 </div>
 
