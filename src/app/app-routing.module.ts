@@ -10,13 +10,14 @@ import {MaterialSetupComponent} from "./project/setup/material/material-setup.co
 import {RoomListComponent} from "./room/list/room-list.component";
 import {ProjectListComponent} from "./project/list/project-list.component";
 import {ProjectDetailComponent} from "./project/detail/project-detail.component";
+import {ProjectMainComponent} from "./project/main/project-main.component";
 
 const routes: Routes = [
-  {path: '', redirectTo: 'customer', pathMatch: 'full'},
-
   // Routing to Main Project View
   {path: 'project/list', component: ProjectListComponent},
+  {path: 'project/view/:id', component: ProjectMainComponent},
   {path: 'project/detail', component: ProjectDetailComponent},
+  {path: 'project/detail/:action/:id', component: ProjectDetailComponent},
   // Routing to project financial setup view
   {path: 'project/financial/setup', component: FinancialSetupComponent},
   // Routing to Painting material setup view

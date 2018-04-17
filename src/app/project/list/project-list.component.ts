@@ -1,7 +1,8 @@
-import {Project} from '../data/project';
-import {ProjectDataService} from '../data/project-data.service';
+import {Project} from '../../model/project';
+import {ProjectDataService} from '../data-service/project-data.service';
 import {Component, OnInit} from '@angular/core';
 import {Location} from '@angular/common';
+import {NavigationExtras, Router} from "@angular/router";
 
 @Component({
   selector: 'app-project-list',
@@ -15,20 +16,17 @@ export class ProjectListComponent implements OnInit {
   submitted = false;
   constructor(
     private dataService: ProjectDataService,
-    private location: Location) {}
+    private router: Router) {}
 
   ngOnInit(): void {
     this.getProjects();
   }
 
-  /*private save(): void {
-    this.dataService.create(this.project);
-  }*/
-
-  /*onSubmit() {
-    this.submitted = true;
-    this.save();
-  }*/
+  deleteProject(id) {
+    if(confirm("Are you sure to delete project")) {
+      this.dataService.delete(id);
+    }
+  }
 
   getProjects() {
     this.dataService.getProjects().then(projects => this.projects = projects);

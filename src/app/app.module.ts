@@ -15,9 +15,10 @@ import {CreateRoomComponent} from "./room/create-room.component";
 import {FinancialSetupComponent} from "./project/setup/financial/financial-setup.component";
 import {MaterialSetupComponent} from "./project/setup/material/material-setup.component";
 import {RoomListComponent} from "./room/list/room-list.component";
-import {ProjectDataService} from "./project/data/project-data.service";
+import {ProjectDataService} from "./project/data-service/project-data.service";
 import {ProjectListComponent} from "./project/list/project-list.component";
 import {ProjectDetailComponent} from "./project/detail/project-detail.component";
+import {ProjectMainComponent} from "./project/main/project-main.component";
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import {ProjectDetailComponent} from "./project/detail/project-detail.component"
     // Project Module
     ProjectListComponent,
     ProjectDetailComponent,
+    ProjectMainComponent,
     FinancialSetupComponent,
     MaterialSetupComponent
   ],
