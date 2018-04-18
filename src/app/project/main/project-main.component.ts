@@ -1,10 +1,11 @@
-import {Project, ProjectType} from '../../model/project';
-import {ProjectDataService} from '../data-service/project-data.service';
+import {ProjectDataService} from '../../data-service/project-data.service';
 import {Component, OnInit} from '@angular/core';
 import {Location} from '@angular/common';
-import {Customer} from "../../model/customer";
-import {Address} from "../../model/address";
 import {ActivatedRoute, Router} from '@angular/router';
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {ViewEncapsulation} from "@angular/core";
+import {RoomMainComponent} from "../../room/main/room-main.component";
+import {ModalDismissReasons} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'app-project-main',
@@ -20,7 +21,8 @@ export class ProjectMainComponent implements OnInit {
     private dataService: ProjectDataService,
     private location: Location,
     private router: Router,
-    private route: ActivatedRoute) {
+    private route: ActivatedRoute,
+    private modalService: NgbModal) {
     this.sub = this.route.params.subscribe(params => {
       this.projectId = +params['id'];
       this.getProjectById(this.projectId);
@@ -28,6 +30,10 @@ export class ProjectMainComponent implements OnInit {
   }
 
   ngOnInit() {}
+
+  open() {
+    this.modalService.open(RoomMainComponent, {size: "lg", centered: true});
+  };
 
   getProjectById(id) {
     this.dataService.getProjectById(id).then(project => this.project = project);

@@ -33,7 +33,7 @@
 <div class="container">
   <div class="float-right">
     <button routerLink="/project/list" class="btn btn-info">Back to Project</button>
-    <button class="btn btn-success" data-toggle="modal" data-target="#exampleModalLong">Add Room</button>
+    <button class="btn btn-success" (click)="open()">Add Room</button>
   </div>
   <table class="table">
     <thead class="thead-light">
@@ -52,7 +52,7 @@
       <td>18 * 18</td>
       <td>$8,700</td>
       <td>
-        <a routerLink="/paint/room/create" class="btn btn-primary btn-sm" href="#">Edit</a>
+        <a (click)="open()" class="btn btn-primary btn-sm" routerLink="#">Edit</a>
         <a routerLink="/paint/room/create" class="btn btn-danger btn-sm" href="#">Delete</a>
       </td>
     </tr>
@@ -62,7 +62,7 @@
       <td>12 * 12</td>
       <td>$3,600</td>
       <td>
-        <a routerLink="/paint/room/create" class="btn btn-primary btn-sm" href="#">Edit</a>
+        <a (click)="open()" class="btn btn-primary btn-sm" routerLink="#">Edit</a>
         <a routerLink="/paint/room/create" class="btn btn-danger btn-sm" href="#">Delete</a>
       </td>
     </tr>
@@ -72,125 +72,10 @@
       <td>14 * 14</td>
       <td>$5,560</td>
       <td>
-        <a routerLink="/paint/room/create" class="btn btn-primary btn-sm" href="#">Edit</a>
+        <a (click)="open()" class="btn btn-primary btn-sm" routerLink="#">Edit</a>
         <a routerLink="/paint/room/create" class="btn btn-danger btn-sm" href="#">Delete</a>
       </td>
     </tr>
     </tbody>
   </table>
 </div>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Add a new Painting Room</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="container">
-          <form (ngSubmit)="onSubmit()">
-            <div class="form-group">
-              <div class="row">
-                <div class="col col-lg-8">
-                  <div>
-                    <div class="form-group col-md-6">
-                      <label for="inputState">Room Type</label>
-                      <select id="inputState" class="form-control">
-                        <option selected>Choose...</option>
-                        <option>Kitchen</option>
-                        <option>Bedroom</option>
-                        <option>Living Room</option>
-                        <option>Dinning Room</option>
-                      </select>
-                    </div>
-                    <div class="form-row col-md-6">
-                      <div class="col">
-                        <label for="length">Length</label>
-                        <input type="number" class="form-control" id="length" placeholder="">
-                      </div>
-                      <div class="col">
-                        <label for="height">Height</label>
-                        <input type="number" class="form-control" id="height" placeholder="">
-                      </div>
-                      <div class="col">
-                        <label for="width">Width</label>
-                        <input type="number" class="form-control" id="width" placeholder="">
-                      </div>
-                    </div>
-                    <br />
-                    <div class="form-row col-md-8">
-                      <div class="col">
-                        <label for="length">Number of Closets</label>
-                        <input type="number" class="form-control" id="closetNum" placeholder="">
-                      </div>
-                      <div class="col">
-                        <label for="height">Number of Doors</label>
-                        <input type="number" class="form-control" id="doorNum" placeholder="">
-                      </div>
-                      <div class="col">
-                        <label for="width">Number of Mantles</label>
-                        <input type="number" class="form-control" id="mantleNum" placeholder="">
-                      </div>
-                      <div class="col">
-                        <label for="width">Number of Columns</label>
-                        <input type="number" class="form-control" id="columnNum" placeholder="">
-                      </div>
-                    </div>
-                    <br />
-                    <div class="form-group col-md-8">
-                      <div class="form-check form-check-inline">
-                        <label>Trim With Crown</label>
-                      </div>
-                      <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-                        <label class="form-check-label" for="inlineRadio1">Yes</label>
-                      </div>
-                      <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                        <label class="form-check-label" for="inlineRadio2">No</label>
-                      </div>
-                    </div>
-                    <div class="btn-group">
-                      <button type="submit" class="btn btn-success">Calculate</button>
-                    </div>
-                  </div>
-                </div>
-                <div [hidden]="!submitted" class="col col-lg-4">
-                  <div class="form-group">
-                    <ul class="list-group">
-                      <li class="list-group-item d-flex justify-content-between align-items-center">
-                        Painting Cost
-                        <span class="badge badge-pill">$1443</span>
-                      </li>
-                      <li class="list-group-item d-flex justify-content-between align-items-center">
-                        Labor Cost
-                        <span class="badge badge-pill">$600</span>
-                      </li>
-                      <li class="list-group-item d-flex justify-content-between align-items-center">
-                        Total Cost
-                        <span class="badge badge-primary badge-pill">$15000</span>
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="text-center">
-                    <button routerLink="/paint/room/list" type="submit" class="btn btn-primary">Finish This Room</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </form>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-

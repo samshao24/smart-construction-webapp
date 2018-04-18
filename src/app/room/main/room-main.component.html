@@ -1,0 +1,96 @@
+<div class="container">
+<div class="modal-header">
+  <h4 class="modal-title">Add Room</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.close()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <div class="row">
+        <div class="col col-lg-8">
+          <div>
+            <div class="form-group col-md-12">
+              <label for="inputState">Room Type</label>
+              <select id="inputState" class="form-control">
+                <option selected>Choose...</option>
+                <option>Kitchen</option>
+                <option>Bedroom</option>
+                <option>Living Room</option>
+                <option>Dinning Room</option>
+              </select>
+            </div>
+            <div class="form-row col-md-12">
+              <div class="col">
+                <label for="length">Length</label>
+                <input type="number" class="form-control" id="length" placeholder="">
+              </div>
+              <div class="col">
+                <label for="height">Height</label>
+                <input type="number" class="form-control" id="height" placeholder="">
+              </div>
+              <div class="col">
+                <label for="width">Width</label>
+                <input type="number" class="form-control" id="width" placeholder="">
+              </div>
+            </div>
+            <br />
+            <div class="form-row col-md-12">
+              <div class="col">
+                <label for="length">Number of Closets</label>
+                <input type="number" class="form-control" id="closetNum" placeholder="">
+              </div>
+              <div class="col">
+                <label for="height">Number of Doors</label>
+                <input type="number" class="form-control" id="doorNum" placeholder="">
+              </div>
+              <div class="col">
+                <label for="width">Number of Mantles</label>
+                <input type="number" class="form-control" id="mantleNum" placeholder="">
+              </div>
+              <div class="col">
+                <label for="width">Number of Columns</label>
+                <input type="number" class="form-control" id="columnNum" placeholder="">
+              </div>
+            </div>
+            <br />
+            <div class="form-group col-md-8">
+              <div class="form-check form-check-inline">
+                <label>Trim With Crown</label>
+              </div>
+              <label class="radio-inline"><input type="radio" name="optradio">Yes</label>
+              <label class="radio-inline"><input type="radio" name="optradio">No</label>
+            </div>
+            <div class="btn-group">
+              <button type="submit" class="btn btn-success">Calculate</button>
+            </div>
+          </div>
+        </div>
+        <div [hidden]="!submitted" class="col col-lg-4">
+          <div class="form-group">
+            <ul class="list-group">
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                Painting Cost
+                <span class="badge badge-pill">$1443</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                Labor Cost
+                <span class="badge badge-pill">$600</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                Total Cost
+                <span class="badge badge-primary badge-pill">$15000</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<div class="modal-footer">
+  <button [hidden]="!submitted" type="button" class="btn btn-primary" (click)="activeModal.close()">Submit</button>
+  <button type="button" class="btn btn-outline-dark" (click)="activeModal.close()">Close</button>
+</div>
+</div>

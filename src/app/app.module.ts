@@ -1,6 +1,7 @@
 import {AppRoutingModule} from './app-routing.module';
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {FormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 
@@ -15,10 +16,12 @@ import {CreateRoomComponent} from "./room/create-room.component";
 import {FinancialSetupComponent} from "./project/setup/financial/financial-setup.component";
 import {MaterialSetupComponent} from "./project/setup/material/material-setup.component";
 import {RoomListComponent} from "./room/list/room-list.component";
-import {ProjectDataService} from "./project/data-service/project-data.service";
+import {ProjectDataService} from "./data-service/project-data.service";
 import {ProjectListComponent} from "./project/list/project-list.component";
 import {ProjectDetailComponent} from "./project/detail/project-detail.component";
 import {ProjectMainComponent} from "./project/main/project-main.component";
+import {RoomMainComponent} from "./room/main/room-main.component";
+
 
 @NgModule({
   declarations: [
@@ -31,6 +34,7 @@ import {ProjectMainComponent} from "./project/main/project-main.component";
     // Room Module
     CreateRoomComponent,
     RoomListComponent,
+    RoomMainComponent,
 
     // Project Module
     ProjectListComponent,
@@ -38,17 +42,22 @@ import {ProjectMainComponent} from "./project/main/project-main.component";
     ProjectMainComponent,
     FinancialSetupComponent,
     MaterialSetupComponent
+
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule.forRoot(),
   ],
   providers: [
     DataService,
     ProjectDataService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    RoomMainComponent,
+  ],
 })
 export class AppModule {}

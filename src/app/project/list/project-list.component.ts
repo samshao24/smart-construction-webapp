@@ -1,5 +1,5 @@
 import {Project} from '../../model/project';
-import {ProjectDataService} from '../data-service/project-data.service';
+import {ProjectDataService} from '../../data-service/project-data.service';
 import {Component, OnInit} from '@angular/core';
 import {Location} from '@angular/common';
 import {NavigationExtras, Router} from "@angular/router";

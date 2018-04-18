@@ -4,7 +4,7 @@ import {Router} from '@angular/router';
 
 import 'rxjs/add/operator/toPromise';
 
-import { Project, ProjectType } from '../../model/project';
+import { Project, ProjectType } from '../model/project';
 
 @Injectable()
 export class ProjectDataService {
