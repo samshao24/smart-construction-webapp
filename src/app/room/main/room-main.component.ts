@@ -4,6 +4,7 @@ import {Location} from '@angular/common';
 import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
 import {Room} from "../../model/room";
 import {Input} from "@angular/core";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-room-main',
@@ -20,6 +21,7 @@ export class RoomMainComponent implements OnInit {
   @Input() params;
   constructor(private dataService: RoomDataService,
               private location: Location,
+              private router: Router,
               public activeModal: NgbActiveModal) {}
 
   ngOnInit() {
@@ -53,7 +55,10 @@ export class RoomMainComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-    this.dataService.create(this.room);
+    this.dataService.create(this.room)
+      .then(() => {
+        this.router.navigate(['/project/list', this.room.projectId])
+      });
     this.activeModal.close();
   }
 }
