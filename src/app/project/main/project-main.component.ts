@@ -25,14 +25,16 @@ export class ProjectMainComponent implements OnInit {
     private modalService: NgbModal) {
     this.sub = this.route.params.subscribe(params => {
       this.projectId = +params['id'];
-      this.getProjectById(this.projectId);
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.getProjectById(this.projectId);
+  }
 
   open() {
-    this.modalService.open(RoomMainComponent, {size: "lg", centered: true});
+    const modalRef = this.modalService.open(RoomMainComponent, {size: "lg"});
+    modalRef.componentInstance.projectId = this.projectId;
   };
 
   getProjectById(id) {

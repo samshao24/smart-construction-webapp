@@ -3,13 +3,13 @@ export class Room {
   public height: number;
   public width: number;
   public length: number;
-  public closet_count: number;
-  public door_count: number;
-  public mantle_count: number;
-  public column_count: number;
-  public wall_size: number;
-  public ceiling_size: number;
-  public trim_size: number;
-  public trim_with_crown_size: number;
-  public project_id: number;
+  public closetCount: number;
+  public doorCount: number;
+  public mantleCount: number;
+  public columnCount: number;
+  public wallSize: number;
+  public ceilingSize: number;
+  public trimWithCrown: boolean;
+  public trimSize: number;
+  public projectId: number;
 }

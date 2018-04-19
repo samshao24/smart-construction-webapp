@@ -1,5 +1,5 @@
-<div class="container text-center col-8">
-  <h3>Status: {{project.status}}</h3>
+<div class="container text-center col-8" *ngIf="project">
+  <h4>Status: {{project.status}}</h4>
   <table class="table table-primary">
     <tbody>
     <tr>

@@ -3,60 +3,42 @@ import { Headers, Http } from '@angular/http';
 import {Router} from '@angular/router';
 
 import 'rxjs/add/operator/toPromise';
-
-import { Project, ProjectType } from '../model/project';
+import {Room} from "../model/room";
 
 @Injectable()
-export class ProjectDataService {
+export class RoomDataService {
 
-  private projectUrl = 'project';
+  private roomUrl = 'room';
   private headers = new Headers({'Content-Type': 'application/json'});
 
   constructor(private http: Http,
               private router: Router) {}
 
-  // Get all projects
-  getProjects(): Promise<Project[]> {
-    const url = this.projectUrl + '/list';
+  getRoomById(id: number) {
+    const url = this.roomUrl + '/detail/' + id;
     return this.http.get(url)
       .toPromise()
-      .then(response => response.json() as Project[])
+      .then(response => response.json() as Room)
       .catch(this.handleError);
   }
 
-  getProjectType(): Promise<ProjectType[]> {
-    const url = this.projectUrl + '/admin/type';
-    return this.http.get(url)
-      .toPromise()
-      .then(response => response.json() as ProjectType[])
-      .catch(this.handleError);
-  }
-
-  getProjectById(id: number) {
-    const url = this.projectUrl + '/detail/' + id;
-    return this.http.get(url)
-      .toPromise()
-      .then(response => response.json() as Project)
-      .catch(this.handleError);
-  }
-
-  create(project: Project) {
-    const url = this.projectUrl + '/save';
+  create(room: Room) {
+    const url = this.roomUrl + '/save';
     return this.http
-      .post(url, JSON.stringify(project), {headers : this.headers})
+      .post(url, JSON.stringify(room), {headers : this.headers})
       .toPromise()
-      .then(() => this.router.navigate(['/project/list']))
+      .then()
       .catch(this.handleError);
   }
 
-  delete(id: number) {
+  /*delete(id: number) {
     const url = this.projectUrl + '/delete/' + id;
     return this.http.delete(url)
       .toPromise()
       .then(() =>
         this.router.navigate(['/project/list']))
       .catch(this.handleError);
-  }
+  }*/
 
   private handleError(error: any): Promise<any> {
     console.error('Error', error); // for demo purposes only

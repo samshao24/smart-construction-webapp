@@ -21,6 +21,7 @@ import {ProjectListComponent} from "./project/list/project-list.component";
 import {ProjectDetailComponent} from "./project/detail/project-detail.component";
 import {ProjectMainComponent} from "./project/main/project-main.component";
 import {RoomMainComponent} from "./room/main/room-main.component";
+import {RoomDataService} from "./data-service/room-data.service";
 
 
 @NgModule({
@@ -53,7 +54,8 @@ import {RoomMainComponent} from "./room/main/room-main.component";
   ],
   providers: [
     DataService,
-    ProjectDataService
+    ProjectDataService,
+    RoomDataService
   ],
   bootstrap: [AppComponent],
   entryComponents: [
