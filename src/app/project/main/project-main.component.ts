@@ -32,9 +32,14 @@ export class ProjectMainComponent implements OnInit {
     this.getProjectById(this.projectId);
   }
 
-  open() {
+  open(action, room) {
     const modalRef = this.modalService.open(RoomMainComponent, {size: "lg"});
-    modalRef.componentInstance.projectId = this.projectId;
+    const params = {
+      'projectId': this.projectId,
+      'action': action,
+      'room': room
+    };
+    modalRef.componentInstance.params = params;
   };
 
   getProjectById(id) {

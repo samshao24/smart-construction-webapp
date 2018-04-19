@@ -1,4 +1,5 @@
 import {Customer} from "./customer";
+import {Room} from "./room";
 
 export class Project {
     public id: number;
@@ -8,6 +9,7 @@ export class Project {
     public status: string;
     public customer: Customer;
     public totalCost: number;
+    public roomList: Room[];
 }
 
 export class ProjectType {

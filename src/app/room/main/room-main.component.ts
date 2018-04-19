@@ -15,15 +15,32 @@ export class RoomMainComponent implements OnInit {
   room: Room;
   showCalculation: boolean;
   submitted: boolean;
-  @Input() projectId;
+  disabled: boolean;
+  action: string;
+  @Input() params;
   constructor(private dataService: RoomDataService,
               private location: Location,
-              public activeModal: NgbActiveModal) {
-    this.room = new Room;
-    console.log(this.projectId);
-  }
+              public activeModal: NgbActiveModal) {}
 
   ngOnInit() {
+    this.action = this.params.action;
+    let room = this.params.room;
+    switch (this.action) {
+      case 'Add':
+        this.room = new Room;
+        this.disabled = false;
+        break;
+      case 'Edit':
+        this.room = room;
+        this.disabled = false;
+        break;
+      case 'View':
+        this.room = room;
+        this.disabled = true;
+        break;
+    }
+    console.log(this.room);
+    this.room.projectId = this.params.projectId;
   }
 
   calculate() {
@@ -31,8 +48,8 @@ export class RoomMainComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log('submitted');
     this.submitted = true;
     this.dataService.create(this.room);
+    this.activeModal.close();
   }
 }

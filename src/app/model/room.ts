@@ -1,5 +1,6 @@
 export class Room {
   public id: number;
+  public type: string;
   public height: number;
   public width: number;
   public length: number;

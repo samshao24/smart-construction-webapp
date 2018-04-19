@@ -50,7 +50,7 @@ import {RoomDataService} from "./data-service/room-data.service";
     FormsModule,
     HttpModule,
     AppRoutingModule,
-    NgbModule.forRoot(),
+    NgbModule.forRoot()
   ],
   providers: [
     DataService,

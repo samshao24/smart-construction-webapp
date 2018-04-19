@@ -1,7 +1,7 @@
 <div class="container">
   <form (ngSubmit)="onSubmit()">
     <div class="modal-header">
-      <h4 class="modal-title">Add Room</h4>
+      <h4 class="modal-title">{{action}} Room</h4>
       <button type="button" class="close" aria-label="Close" (click)="activeModal.close()">
         <span aria-hidden="true">&times;</span>
       </button>
@@ -12,46 +12,46 @@
             <div class="col col-lg-8">
               <div>
                 <div class="form-group col-md-12">
-                  <label for="inputState">Room Type</label>
-                  <select id="inputState" class="form-control">
-                    <option selected>Choose...</option>
-                    <option>Kitchen</option>
-                    <option>Bedroom</option>
-                    <option>Living Room</option>
-                    <option>Dinning Room</option>
+                  <label>Room Type</label>
+                  <select [(ngModel)]="room.type" id="type" name="type" class="form-control" [disabled]="disabled">
+                    <option [value]="">Choose...</option>
+                    <option [value]="'K'">Kitchen</option>
+                    <option [value]="'B'">Bedroom</option>
+                    <option [value]="'L'">Living Room</option>
+                    <option [value]="'D'">Dinning Room</option>
                   </select>
                 </div>
                 <div class="form-row col-md-12">
                   <div class="col">
                     <label for="length">Length</label>
-                    <input [(ngModel)]="room.length" name="length" type="number" class="form-control" id="length" placeholder="">
+                    <input [(ngModel)]="room.length" name="length" type="number" class="form-control" id="length" [disabled]="disabled">
                   </div>
                   <div class="col">
                     <label for="height">Height</label>
-                    <input [(ngModel)]="room.height" name="height" type="number" class="form-control" id="height" placeholder="">
+                    <input [(ngModel)]="room.height" name="height" type="number" class="form-control" id="height" [disabled]="disabled">
                   </div>
                   <div class="col">
                     <label for="width">Width</label>
-                    <input [(ngModel)]="room.width" name="width" type="number" class="form-control" id="width" placeholder="">
+                    <input [(ngModel)]="room.width" name="width" type="number" class="form-control" id="width" [disabled]="disabled">
                   </div>
                 </div>
                 <br />
                 <div class="form-row col-md-12">
                   <div class="col">
                     <label for="length">Number of Closets</label>
-                    <input [(ngModel)]="room.closetCount" name="closetCount" type="number" class="form-control" id="closetNum" placeholder="">
+                    <input [(ngModel)]="room.closetCount" name="closetCount" type="number" class="form-control" id="closetNum" [disabled]="disabled">
                   </div>
                   <div class="col">
                     <label for="height">Number of Doors</label>
-                    <input [(ngModel)]="room.doorCount" name="doorCount" type="number" class="form-control" id="doorNum" placeholder="">
+                    <input [(ngModel)]="room.doorCount" name="doorCount" type="number" class="form-control" id="doorNum" [disabled]="disabled">
                   </div>
                   <div class="col">
                     <label for="width">Number of Mantles</label>
-                    <input [(ngModel)]="room.mantleCount" name="mantleCount" type="number" class="form-control" id="mantleNum" placeholder="">
+                    <input [(ngModel)]="room.mantleCount" name="mantleCount" type="number" class="form-control" id="mantleNum" [disabled]="disabled">
                   </div>
                   <div class="col">
                     <label for="width">Number of Columns</label>
-                    <input [(ngModel)]="room.columnCount" name="columnCount" type="number" class="form-control" id="columnNum" placeholder="">
+                    <input [(ngModel)]="room.columnCount" name="columnCount" type="number" class="form-control" id="columnNum" [disabled]="disabled">
                   </div>
                 </div>
                 <br />
@@ -60,20 +60,20 @@
                     <label>Trim With Crown</label>
                   </div>
                   <label class="radio-inline">
-                    <input [(ngModel)]="room.trimWithCrown" type="radio" name="trimWithCrown" />
+                    <input [(ngModel)]="room.trimWithCrown" type="radio" name="trimWithCrown" value="true" [disabled]="disabled"/>
                     Yes
                   </label>
                   <label class="radio-inline">
-                    <input [(ngModel)]="room.trimWithCrown" type="radio" name="trimWithCrown" />
+                    <input [(ngModel)]="room.trimWithCrown" type="radio" name="trimWithCrown" value="false" [disabled]="disabled"/>
                     No
                   </label>
                 </div>
-                <div class="btn-group">
+                <div [hidden]="disabled" class="btn-group">
                   <button type="button" (click)="calculate()" class="btn btn-success">Calculate</button>
                 </div>
               </div>
             </div>
-            <div [hidden]="!showCalculation" class="col col-lg-4">
+            <div [hidden]="!showCalculation && !disabled" class="col col-lg-4">
               <div class="form-group">
                 <ul class="list-group">
                   <li class="list-group-item d-flex justify-content-between align-items-center">
@@ -95,7 +95,7 @@
         </div>
     </div>
     <div class="modal-footer">
-      <button [hidden]="!showCalculation" type="submit" class="btn btn-primary" (click)="activeModal.close()">Submit</button>
+      <button [hidden]="!showCalculation || disabled" type="submit" class="btn btn-primary">Submit</button>
       <button type="button" class="btn btn-outline-dark" (click)="activeModal.close()">Close</button>
     </div>
   </form>
