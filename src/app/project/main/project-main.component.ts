@@ -1,5 +1,5 @@
 import {ProjectDataService} from '../../data-service/project-data.service';
-import {Component, OnInit} from '@angular/core';
+import {Component, Injectable, OnInit} from '@angular/core';
 import {Location} from '@angular/common';
 import {ActivatedRoute, Router} from '@angular/router';
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
@@ -12,7 +12,6 @@ import {ModalDismissReasons} from "@ng-bootstrap/ng-bootstrap";
   templateUrl: './project-main.component.html',
   styleUrls: ['./project-main.component.css']
 })
-
 export class ProjectMainComponent implements OnInit {
   project: any;
   private sub: any;

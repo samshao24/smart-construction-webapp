@@ -12,5 +12,8 @@ export class Room {
   public ceilingSize: number;
   public trimWithCrown: boolean;
   public trimSize: number;
+  public paintingCost: number;
+  public laborCost: number;
+  public totalCost: number;
   public projectId: number;
 }

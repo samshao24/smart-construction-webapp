@@ -40,6 +40,15 @@ export class RoomDataService {
       .catch(this.handleError);
   }*/
 
+  calculate(room: Room) {
+    const url = this.roomUrl + '/calculate';
+    return this.http
+      .post(url, JSON.stringify(room), {headers : this.headers})
+      .toPromise()
+      .then(response => response.json() as Room)
+      .catch(this.handleError);
+  }
+
   private handleError(error: any): Promise<any> {
     console.error('Error', error); // for demo purposes only
     return Promise.reject(error.message || error);

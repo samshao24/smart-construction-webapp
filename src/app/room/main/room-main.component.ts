@@ -44,6 +44,10 @@ export class RoomMainComponent implements OnInit {
   }
 
   calculate() {
+    this.dataService.calculate(this.room)
+      .then(res => {
+        this.room = res;
+      });
     this.showCalculation = true;
   }
 
