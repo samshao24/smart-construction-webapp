@@ -54,7 +54,7 @@
         <td>
           <button type="button" (click)="open('View', room)" class="btn btn-info btn-sm">View</button>
           <button type="button" (click)="open('Edit', room)" class="btn btn-primary btn-sm">Edit</button>
-          <button routerLink="/paint/room/create" class="btn btn-danger btn-sm" href="#">Delete</button>
+          <button (click)="deleteRoom(room.id)" class="btn btn-danger btn-sm" href="#">Delete</button>
         </td>
       </tr>
     </tbody>

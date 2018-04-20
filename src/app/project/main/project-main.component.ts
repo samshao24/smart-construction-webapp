@@ -1,11 +1,10 @@
 import {ProjectDataService} from '../../data-service/project-data.service';
+import {RoomDataService} from "../../data-service/room-data.service";
 import {Component, Injectable, OnInit} from '@angular/core';
 import {Location} from '@angular/common';
 import {ActivatedRoute, Router} from '@angular/router';
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
-import {ViewEncapsulation} from "@angular/core";
 import {RoomMainComponent} from "../../room/main/room-main.component";
-import {ModalDismissReasons} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'app-project-main',
@@ -17,7 +16,8 @@ export class ProjectMainComponent implements OnInit {
   private sub: any;
   private projectId: number;
   constructor(
-    private dataService: ProjectDataService,
+    private projectDataService: ProjectDataService,
+    private roomDataService: RoomDataService,
     private location: Location,
     private router: Router,
     private route: ActivatedRoute,
@@ -41,7 +41,16 @@ export class ProjectMainComponent implements OnInit {
     modalRef.componentInstance.params = params;
   };
 
+  deleteRoom(id) {
+    if(confirm("Are you sure to delete room")) {
+      this.roomDataService.delete(id)
+        .then(() => {
+          this.router.navigate(['/project/view', this.projectId])
+        })
+    }
+  }
+
   getProjectById(id) {
-    this.dataService.getProjectById(id).then(project => this.project = project);
+    this.projectDataService.getProjectById(id).then(project => this.project = project);
   }
 }

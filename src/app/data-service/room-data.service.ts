@@ -27,18 +27,20 @@ export class RoomDataService {
     return this.http
       .post(url, JSON.stringify(room), {headers : this.headers})
       .toPromise()
-      .then()
+      .then(() => {
+        this.router.navigate(['/project/view', room.projectId])
+      })
       .catch(this.handleError);
   }
 
-  /*delete(id: number) {
-    const url = this.projectUrl + '/delete/' + id;
+  delete(id: number) {
+    const url = this.roomUrl + '/delete/' + id;
     return this.http.delete(url)
       .toPromise()
       .then(() =>
         this.router.navigate(['/project/list']))
       .catch(this.handleError);
-  }*/
+  }
 
   calculate(room: Room) {
     const url = this.roomUrl + '/calculate';

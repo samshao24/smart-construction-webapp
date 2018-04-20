@@ -18,11 +18,6 @@ export class CreateRoomComponent implements OnInit {
   ngOnInit() {
   }
 
-  newCustomer(): void {
-    this.submitted = false;
-    this.customer = new Customer();
-  }
-
   private save(): void {
     this.dataService.create(this.customer);
   }
@@ -30,9 +25,5 @@ export class CreateRoomComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
     this.save();
-  }
-
-  goBack(): void {
-    this.location.back();
   }
 }

@@ -1,0 +1,23 @@
+<div class="container">
+  <div>
+    <button (click)="open()" class="btn btn-success float-right">Add Material</button>
+  </div>
+  <table class="table">
+    <thead class="thead-light">
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Code</th>
+      <th scope="col">Quality</th>
+      <th scope="col">Price</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let paintingMaterial of paintingMaterialList">
+      <td>{{paintingMaterial.name}}</td>
+      <td>{{paintingMaterial.code}}</td>
+      <td>{{paintingMaterial.quality}}</td>
+      <td>{{paintingMaterial.originalPrice}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>

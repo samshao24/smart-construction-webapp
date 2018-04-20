@@ -14,7 +14,8 @@ import {CreateCustomerComponent} from './create-customer/create-customer.compone
 import {SearchCustomersComponent} from './search-customers/search-customers.component';
 import {CreateRoomComponent} from "./room/create-room.component";
 import {FinancialSetupComponent} from "./project/setup/financial/financial-setup.component";
-import {MaterialSetupComponent} from "./project/setup/material/material-setup.component";
+import {MaterialSetupComponent} from "./project/setup/material/main/material-setup.component";
+import {MaterialListComponent} from "./project/setup/material/material-list.component";
 import {RoomListComponent} from "./room/list/room-list.component";
 import {ProjectDataService} from "./data-service/project-data.service";
 import {ProjectListComponent} from "./project/list/project-list.component";
@@ -22,6 +23,7 @@ import {ProjectDetailComponent} from "./project/detail/project-detail.component"
 import {ProjectMainComponent} from "./project/main/project-main.component";
 import {RoomMainComponent} from "./room/main/room-main.component";
 import {RoomDataService} from "./data-service/room-data.service";
+import {ProjectSetupDataService} from "./data-service/project-setup-data.service";
 
 
 @NgModule({
@@ -42,7 +44,8 @@ import {RoomDataService} from "./data-service/room-data.service";
     ProjectDetailComponent,
     ProjectMainComponent,
     FinancialSetupComponent,
-    MaterialSetupComponent
+    MaterialSetupComponent,
+    MaterialListComponent
 
   ],
   imports: [
@@ -55,11 +58,13 @@ import {RoomDataService} from "./data-service/room-data.service";
   providers: [
     DataService,
     ProjectDataService,
-    RoomDataService
+    RoomDataService,
+    ProjectSetupDataService
   ],
   bootstrap: [AppComponent],
   entryComponents: [
     RoomMainComponent,
+    MaterialSetupComponent
   ],
 })
 export class AppModule {}

@@ -6,7 +6,8 @@ import {SearchCustomersComponent} from './search-customers/search-customers.comp
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {FinancialSetupComponent} from "./project/setup/financial/financial-setup.component";
-import {MaterialSetupComponent} from "./project/setup/material/material-setup.component";
+import {MaterialSetupComponent} from "./project/setup/material/main/material-setup.component";
+import {MaterialListComponent} from "./project/setup/material/material-list.component";
 import {RoomListComponent} from "./room/list/room-list.component";
 import {ProjectListComponent} from "./project/list/project-list.component";
 import {ProjectDetailComponent} from "./project/detail/project-detail.component";
@@ -19,9 +20,10 @@ const routes: Routes = [
   {path: 'project/detail', component: ProjectDetailComponent},
   {path: 'project/detail/:action/:id', component: ProjectDetailComponent},
   // Routing to project financial setup view
-  {path: 'project/financial/setup', component: FinancialSetupComponent},
+  {path: 'project/setup/financial', component: FinancialSetupComponent},
   // Routing to Painting material setup view
-  {path: 'project/material/setup', component: MaterialSetupComponent},
+  {path: 'project/setup/material/detail', component: MaterialSetupComponent},
+  {path: 'project/setup/material/list', component: MaterialListComponent},
   // Routing to Painting Project
   {path: 'paint/room/create', component: CreateRoomComponent},
   {path: 'paint/room/list', component: RoomListComponent},

@@ -41,8 +41,8 @@ export class RoomMainComponent implements OnInit {
         this.disabled = true;
         break;
     }
-    console.log(this.room);
     this.room.projectId = this.params.projectId;
+    console.log(this.room);
   }
 
   calculate() {
@@ -57,8 +57,7 @@ export class RoomMainComponent implements OnInit {
     this.submitted = true;
     this.dataService.create(this.room)
       .then(() => {
-        this.router.navigate(['/project/list', this.room.projectId])
+        this.activeModal.close();
       });
-    this.activeModal.close();
   }
 }

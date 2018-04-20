@@ -1,0 +1,50 @@
+<div class="container">
+  <form (ngSubmit)="onSubmit()">
+    <div class="modal-header">
+      <h4 class="modal-title">Add Painting Material</h4>
+      <button type="button" class="close" aria-label="Close" (click)="activeModal.close()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="form-group">
+        <div class="row">
+          <div class="col col-lg-8">
+            <div>
+              <div class="form-row col-md-12">
+                <label>Name</label>
+                <input [(ngModel)]="paintingMaterial.name" name="name" type="text" class="form-control" placeholder="" />
+              </div>
+              <div class="form-row col-md-12">
+                <label>Code</label>
+                <input [(ngModel)]="paintingMaterial.code" name="code" type="text" class="form-control" placeholder="" />
+              </div>
+              <div class="form-row col-md-12">
+                <label>Quality</label>
+                <select [(ngModel)]="paintingMaterial.qualityCode" name="qualityCode" id="quality" class="form-control">
+                  <option selected>Choose...</option>
+                  <option [value]="'A'">Average</option>
+                  <option [value]="'G'">Good</option>
+                  <option [value]="'B'">Best</option>
+                  <option [value]="'E'">Excellent</option>
+                </select>
+              </div>
+              <div class="form-row col-md-12">
+                <label>Original Price</label>
+                <input [(ngModel)]="paintingMaterial.originalPrice" name="originalPrice" type="number" class="form-control" placeholder="" />
+              </div>
+              <div class="form-row col-md-12">
+                <label>Quote Price</label>
+                <input [(ngModel)]="paintingMaterial.quotePrice" name="quotePrice" type="number" class="form-control" placeholder="" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="button" class="btn btn-outline-dark" (click)="activeModal.close()">Close</button>
+    </div>
+  </form>
+</div>
