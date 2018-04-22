@@ -2,6 +2,7 @@ import {Headers, Http} from "@angular/http";
 import {Router} from "@angular/router";
 import {Injectable} from "@angular/core";
 import {PaintingMaterial} from "../model/paintingMaterial";
+import {FinancialSetup} from "../model/financialSetup";
 
 @Injectable()
 export class ProjectSetupDataService {
@@ -11,6 +12,24 @@ export class ProjectSetupDataService {
 
   constructor(private http: Http,
               private router: Router) {}
+
+  getFinancialSetup(): Promise<FinancialSetup> {
+    const url = this.projectSetupUrl + '/painting/financial/setup';
+    return this.http.get(url)
+      .toPromise()
+      .then(response => response.json() as FinancialSetup)
+      .catch(this.handleError);
+  }
+
+  saveFinancialSetup(financialSetup: FinancialSetup) {
+    const url = this.projectSetupUrl + '/painting/financial/save';
+    console.log(financialSetup);
+    return this.http
+      .post(url, JSON.stringify(financialSetup), {headers : this.headers})
+      .toPromise()
+      .then()
+      .catch(this.handleError);
+  }
 
   getAllPaintingMaterial(): Promise<PaintingMaterial[]> {
     const url = this.projectSetupUrl + '/painting/material/all';
@@ -30,7 +49,6 @@ export class ProjectSetupDataService {
       })
       .catch(this.handleError);
   }
-
 
   private handleError(error: any): Promise<any> {
     console.error('Error', error);

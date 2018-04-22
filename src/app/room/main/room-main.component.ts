@@ -5,6 +5,7 @@ import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
 import {Room} from "../../model/room";
 import {Input} from "@angular/core";
 import {Router} from "@angular/router";
+import {RoomExpense} from "../../model/roomExpense";
 
 @Component({
   selector: 'app-room-main',
@@ -14,6 +15,7 @@ import {Router} from "@angular/router";
 
 export class RoomMainComponent implements OnInit {
   room: Room;
+  roomExpense: RoomExpense;
   showCalculation: boolean;
   submitted: boolean;
   disabled: boolean;
@@ -42,6 +44,9 @@ export class RoomMainComponent implements OnInit {
         break;
     }
     this.room.projectId = this.params.projectId;
+    if (this.room.expense == null) {
+      this.room.expense = new RoomExpense();
+    }
     console.log(this.room);
   }
 

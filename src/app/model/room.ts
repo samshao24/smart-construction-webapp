@@ -1,3 +1,5 @@
+import {RoomExpense} from "./roomExpense";
+
 export class Room {
   public id: number;
   public type: string;
@@ -16,4 +18,5 @@ export class Room {
   public laborCost: number;
   public totalCost: number;
   public projectId: number;
+  public expense: RoomExpense;
 }

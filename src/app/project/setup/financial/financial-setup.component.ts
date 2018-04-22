@@ -1,7 +1,7 @@
-import {Customer} from '../../../customer';
-import {DataService} from '../../../data.service';
+import {ProjectSetupDataService} from '../../../data-service/project-setup-data.service';
 import {Component, OnInit} from '@angular/core';
 import {Location} from '@angular/common';
+import {FinancialSetup} from "../../../model/financialSetup";
 
 @Component({
   selector: 'app-financial-setup',
@@ -10,29 +10,40 @@ import {Location} from '@angular/common';
 })
 
 export class FinancialSetupComponent implements OnInit {
-  customer = new Customer;
-  submitted = false;
-  constructor(private dataService: DataService,
-    private location: Location) {}
+  submitted: boolean;
+  financialSetup: FinancialSetup;
+  message: string;
+  lock: boolean;
+  constructor(private dataService: ProjectSetupDataService,
+    private location: Location) {
+    this.financialSetup = new FinancialSetup();
+  }
 
   ngOnInit() {
+    console.log('init');
+    this.getFinancialSetup();
   }
 
-  newCustomer(): void {
-    this.submitted = false;
-    this.customer = new Customer();
+  saveFinancialSetup() {
+    console.log(this.financialSetup);
+    this.dataService.saveFinancialSetup(this.financialSetup)
+      .then(() => {
+        this.message = 'Financial Setup Saved and this setup will be locked';
+        this.lock = true;
+    });
   }
 
-  private save(): void {
-    this.dataService.create(this.customer);
+  getFinancialSetup() {
+    this.dataService.getFinancialSetup().then(financialSetup => {
+        if (financialSetup != null) {
+          this.financialSetup = financialSetup;
+          this.lock = true;
+        }
+    });
   }
 
   onSubmit() {
     this.submitted = true;
-    this.save();
-  }
-
-  goBack(): void {
-    this.location.back();
+    this.saveFinancialSetup();
   }
 }
