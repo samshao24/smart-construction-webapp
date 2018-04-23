@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" *ngIf="project">
   <form (ngSubmit)="onSubmit()">
     <div class="alert alert-primary" role="alert">
       {{action}} Project
@@ -15,6 +15,12 @@
               <select id="type" class="form-control">
                 <option>Please select</option>
                 <option *ngFor="let type of projectTypes" [value]="type.id">{{type.type}}</option>
+              </select>
+            </div>
+            <div class="col col-md-4">
+              <label for="paintingMaterial">Painting Material</label>
+              <select id="paintingMaterial" class="form-control" name="paintingMaterial" [(ngModel)]="project.paintingMaterialId">
+                <option *ngFor="let material of paintingMaterials" [value]="material.id">{{material.name}}</option>
               </select>
             </div>
           </div>

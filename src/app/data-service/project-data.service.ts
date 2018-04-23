@@ -5,6 +5,7 @@ import {Router} from '@angular/router';
 import 'rxjs/add/operator/toPromise';
 
 import { Project, ProjectType } from '../model/project';
+import {PaintingMaterial} from "../model/paintingMaterial";
 
 @Injectable()
 export class ProjectDataService {
@@ -32,6 +33,14 @@ export class ProjectDataService {
       .catch(this.handleError);
   }
 
+  getPaintingMaterial(): Promise<PaintingMaterial[]> {
+    const url = this.projectUrl + '/admin/painting/material/all';
+    return this.http.get(url)
+      .toPromise()
+      .then(response => response.json() as PaintingMaterial[])
+      .catch(this.handleError);
+  }
+
   getProjectById(id: number) {
     const url = this.projectUrl + '/detail/' + id;
     return this.http.get(url)
@@ -53,13 +62,12 @@ export class ProjectDataService {
     const url = this.projectUrl + '/delete/' + id;
     return this.http.delete(url)
       .toPromise()
-      .then(() =>
-        this.router.navigate(['/project/list']))
+      .then()
       .catch(this.handleError);
   }
 
   private handleError(error: any): Promise<any> {
-    console.error('Error', error); // for demo purposes only
+    console.error('Error', error);
     return Promise.reject(error.message || error);
   }
 }

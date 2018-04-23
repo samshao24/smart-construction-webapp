@@ -22,8 +22,6 @@ export class RoomMainComponent implements OnInit {
   action: string;
   @Input() params;
   constructor(private dataService: RoomDataService,
-              private location: Location,
-              private router: Router,
               public activeModal: NgbActiveModal) {}
 
   ngOnInit() {
@@ -47,7 +45,6 @@ export class RoomMainComponent implements OnInit {
     if (this.room.expense == null) {
       this.room.expense = new RoomExpense();
     }
-    console.log(this.room);
   }
 
   calculate() {
@@ -55,6 +52,7 @@ export class RoomMainComponent implements OnInit {
       .then(res => {
         this.room = res;
       });
+    console.log(this.room);
     this.showCalculation = true;
   }
 

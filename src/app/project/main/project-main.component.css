@@ -5,3 +5,7 @@
 .btn-sm {
   width: 60px;
 }
+
+.table {
+  border-radius: 25px;
+}

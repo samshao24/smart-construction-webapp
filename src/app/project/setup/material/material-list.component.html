@@ -9,6 +9,7 @@
       <th scope="col">Code</th>
       <th scope="col">Quality</th>
       <th scope="col">Price</th>
+      <th scope="col"></th>
     </tr>
     </thead>
     <tbody>
@@ -17,6 +18,9 @@
       <td>{{paintingMaterial.code}}</td>
       <td>{{paintingMaterial.quality}}</td>
       <td>{{paintingMaterial.originalPrice}}</td>
+      <td>
+        <button type="button" (click)="delete(paintingMaterial.id)" class="btn btn-danger btn-sm">Delete</button>
+      </td>
     </tr>
     </tbody>
   </table>

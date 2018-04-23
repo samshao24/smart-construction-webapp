@@ -50,6 +50,15 @@ export class ProjectSetupDataService {
       .catch(this.handleError);
   }
 
+  deletePaintingMaterial(id: number) {
+    const url = this.projectSetupUrl + '/painting/material/delete/' + id;
+    return this.http.delete(url)
+      .toPromise()
+      .then(() =>
+        this.router.navigate(['/project/setup/material/list']))
+      .catch(this.handleError);
+  }
+
   private handleError(error: any): Promise<any> {
     console.error('Error', error);
     return Promise.reject(error.message || error);
