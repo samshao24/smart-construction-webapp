@@ -24,6 +24,7 @@ import {ProjectMainComponent} from "./project/main/project-main.component";
 import {RoomMainComponent} from "./room/main/room-main.component";
 import {RoomDataService} from "./data-service/room-data.service";
 import {ProjectSetupDataService} from "./data-service/project-setup-data.service";
+import {LoginComponent} from "./login/login.component";
 
 
 @NgModule({
@@ -45,8 +46,10 @@ import {ProjectSetupDataService} from "./data-service/project-setup-data.service
     ProjectMainComponent,
     FinancialSetupComponent,
     MaterialSetupComponent,
-    MaterialListComponent
+    MaterialListComponent,
 
+    // Login Module
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -64,7 +67,8 @@ import {ProjectSetupDataService} from "./data-service/project-setup-data.service
   bootstrap: [AppComponent],
   entryComponents: [
     RoomMainComponent,
-    MaterialSetupComponent
+    MaterialSetupComponent,
+    LoginComponent
   ],
 })
 export class AppModule {}

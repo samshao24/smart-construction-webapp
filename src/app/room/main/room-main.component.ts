@@ -47,7 +47,6 @@ export class RoomMainComponent implements OnInit {
     if (this.room.expense == null) {
       this.room.expense = new RoomExpense();
     }
-    console.log(this.room);
   }
 
   calculate() {
