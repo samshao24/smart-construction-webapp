@@ -24,11 +24,15 @@ export class ProjectListComponent implements OnInit {
 
   deleteProject(id) {
     if(confirm("Are you sure to delete project")) {
-      this.dataService.delete(id);
+      this.dataService.delete(id)
+        .then(() => {
+          this.getProjects();
+        });
     }
   }
 
   getProjects() {
-    this.dataService.getProjects().then(projects => this.projects = projects);
+    this.dataService.getProjects()
+      .then(projects => this.projects = projects);
   }
 }

@@ -37,8 +37,7 @@ export class RoomDataService {
     const url = this.roomUrl + '/delete/' + id;
     return this.http.delete(url)
       .toPromise()
-      .then(() =>
-        this.router.navigate(['/project/list']))
+      .then()
       .catch(this.handleError);
   }
 

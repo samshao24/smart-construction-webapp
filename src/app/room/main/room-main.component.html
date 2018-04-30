@@ -14,7 +14,6 @@
                 <div class="form-group col-md-12">
                   <label>Room Type</label>
                   <select [(ngModel)]="room.type" id="type" name="type" class="form-control" [disabled]="disabled">
-                    <option [value]="">Choose...</option>
                     <option [value]="'K'">Kitchen</option>
                     <option [value]="'B'">Bedroom</option>
                     <option [value]="'L'">Living Room</option>
@@ -60,11 +59,11 @@
                     <label>Trim With Crown</label>
                   </div>
                   <label class="radio-inline">
-                    <input [(ngModel)]="room.trimWithCrown" type="radio" name="trimWithCrown" value="true" [disabled]="disabled"/>
+                    <input [(ngModel)]="room.trimWithCrown" type="radio" name="trimWithCrown" [value]="true" [disabled]="disabled"/>
                     Yes
                   </label>
                   <label class="radio-inline">
-                    <input [(ngModel)]="room.trimWithCrown" type="radio" name="trimWithCrown" value="false" [disabled]="disabled"/>
+                    <input [(ngModel)]="room.trimWithCrown" type="radio" name="trimWithCrown" [value]="false" [disabled]="disabled"/>
                     No
                   </label>
                 </div>

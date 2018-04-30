@@ -22,8 +22,6 @@ export class RoomMainComponent implements OnInit {
   action: string;
   @Input() params;
   constructor(private dataService: RoomDataService,
-              private location: Location,
-              private router: Router,
               public activeModal: NgbActiveModal) {}
 
   ngOnInit() {
@@ -54,6 +52,7 @@ export class RoomMainComponent implements OnInit {
       .then(res => {
         this.room = res;
       });
+    console.log(this.room);
     this.showCalculation = true;
   }
 

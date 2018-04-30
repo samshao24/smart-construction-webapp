@@ -39,13 +39,16 @@ export class ProjectMainComponent implements OnInit {
       'room': room
     };
     modalRef.componentInstance.params = params;
+    modalRef.result.then(() => {
+      this.getProjectById(this.projectId);
+    })
   };
 
-  deleteRoom(id) {
+  deleteRoom(id, projectId) {
     if(confirm("Are you sure to delete room")) {
       this.roomDataService.delete(id)
         .then(() => {
-          this.router.navigate(['/project/view', this.projectId])
+          this.getProjectById(projectId);
         })
     }
   }

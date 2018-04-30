@@ -6,6 +6,7 @@ export class RoomExpense {
   public columnExpense: number;
   public wallExpense: number;
   public ceilingExpense: Date;
+  public trimExpense: number;
   public materialExpense: number;
   public laborExpense: Date;
   public totalExpense: number;

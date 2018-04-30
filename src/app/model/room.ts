@@ -3,6 +3,7 @@ import {RoomExpense} from "./roomExpense";
 export class Room {
   public id: number;
   public type: string;
+  public typeDisplay: string;
   public height: number;
   public width: number;
   public length: number;

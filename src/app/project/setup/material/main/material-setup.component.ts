@@ -20,9 +20,11 @@ export class MaterialSetupComponent implements OnInit {
     this.paintingMaterial = new PaintingMaterial;
   }
 
-  private save(): void {
+  public save(): void {
     this.dataService.savePaintingMaterial(this.paintingMaterial)
-      .then(() => this.activeModal.close());
+      .then(() => {
+        this.activeModal.close();
+      });
   }
 
   onSubmit() {

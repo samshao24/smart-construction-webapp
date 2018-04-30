@@ -23,10 +23,23 @@ export class MaterialListComponent implements OnInit {
   }
 
   open() {
-    this.modalService.open(MaterialSetupComponent, {size: "lg"});
+    let materialSetupModal = this.modalService.open(MaterialSetupComponent, {size: "lg"});
+    materialSetupModal.result.then(() => {
+      this.getAllPaintingMaterial();
+    }).catch((error) => {
+      console.log(error);
+    });
   };
 
+  delete(id) {
+    if(confirm("Are you sure to delete project")) {
+      this.dataService.deletePaintingMaterial(id)
+        .then(() => this.getAllPaintingMaterial());
+    }
+  }
+
   getAllPaintingMaterial() {
-    this.dataService.getAllPaintingMaterial().then(paintingMaterialList => this.paintingMaterialList = paintingMaterialList);
+    this.dataService.getAllPaintingMaterial()
+      .then(paintingMaterialList => this.paintingMaterialList = paintingMaterialList);
   }
 }

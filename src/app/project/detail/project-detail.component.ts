@@ -5,6 +5,7 @@ import {Location} from '@angular/common';
 import {Customer} from "../../model/customer";
 import {Address} from "../../model/address";
 import {ActivatedRoute, Router} from '@angular/router';
+import {PaintingMaterial} from "../../model/paintingMaterial";
 
 @Component({
   selector: 'app-project-detail',
@@ -15,6 +16,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class ProjectDetailComponent implements OnInit {
   project: any;
   projectTypes: ProjectType[];
+  paintingMaterials: PaintingMaterial[];
   submitted: boolean;
   public action: string;
   private sub: any;
@@ -36,21 +38,27 @@ export class ProjectDetailComponent implements OnInit {
           this.project.customer.address = new Address;
         }
         this.projectId = +params['id']; // (+) converts string 'id' to a number
-
-        // In a real app: dispatch action to load the details here.
       });
   }
 
   ngOnInit() {
     this.getAllProjectType();
+    this.getAllPaintingMaterial();
   }
 
   getProjectById(id) {
-    this.dataService.getProjectById(id).then(project => this.project = project);
+    this.dataService.getProjectById(id)
+      .then(project => this.project = project);
   }
 
   getAllProjectType() {
-    this.dataService.getProjectType().then(projectTypes => this.projectTypes = projectTypes);
+    this.dataService.getProjectType()
+      .then(projectTypes => this.projectTypes = projectTypes);
+  }
+
+  getAllPaintingMaterial() {
+    this.dataService.getPaintingMaterial()
+      .then(paintingMaterials => this.paintingMaterials = paintingMaterials);
   }
 
   onSubmit() {
