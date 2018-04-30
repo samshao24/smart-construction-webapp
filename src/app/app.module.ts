@@ -25,6 +25,7 @@ import {RoomMainComponent} from "./room/main/room-main.component";
 import {RoomDataService} from "./data-service/room-data.service";
 import {ProjectSetupDataService} from "./data-service/project-setup-data.service";
 import {LoginComponent} from "./login/login.component";
+import {OauthTokenService} from "./oauth-service/oauth-token.service";
 
 
 @NgModule({
@@ -62,7 +63,8 @@ import {LoginComponent} from "./login/login.component";
     DataService,
     ProjectDataService,
     RoomDataService,
-    ProjectSetupDataService
+    ProjectSetupDataService,
+    OauthTokenService
   ],
   bootstrap: [AppComponent],
   entryComponents: [

@@ -4,21 +4,14 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
     <a class="navbar-brand" href="#">Bartlett Painting</a>
-    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-      <!--<li class="nav-item">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0" *ngIf="authenticated">
+      <li class="nav-item">
         <a class="nav-link">Home</a>
-      </li>-->
-      <!--<li class="nav-item">
+      </li>
+      <li class="nav-item">
         <a class="nav-link" routerLink="project/list">Existing Projects</a>
       </li>
       <li class="nav-item dropdown">
-        <!--<div ngbDropdown class="d-inline-block">
-          <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Project Setup</button>
-          <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-            <button routerLink="project/setup/material/list" class="dropdown-item">Painting Material Setup</button>
-            <button routerLink="project/setup/financial" class="dropdown-item">Financial Setup</button>
-          </div>
-        </div>-->
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Project Setup
         </a>
@@ -28,13 +21,16 @@
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#">Something else here</a>
         </div>
-      </li>-->
+      </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <button (click)="login()" class="btn btn-outline-primary my-2 my-sm-0" type="button">Login</button>
-      <button class="btn btn-outline-success my-2 my-sm-0" type="button">Register</button>
-    </form>
   </div>
+  <form class="form-inline my-2 my-lg-0" *ngIf="!authenticated">
+    <button (click)="login()" class="btn btn-outline-primary my-2 my-sm-0" type="button">Login</button>
+    <button class="btn btn-outline-success my-2 my-sm-0" type="button">Register</button>
+  </form>
+  <form class="form-inline my-2 my-lg-0" *ngIf="authenticated">
+    <button (click)="logout()" class="btn btn-outline-success my-2 my-sm-0" type="button">Logout</button>
+  </form>
 </nav>
 <br />
 <router-outlet></router-outlet>

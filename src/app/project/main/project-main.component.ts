@@ -41,7 +41,7 @@ export class ProjectMainComponent implements OnInit {
     modalRef.componentInstance.params = params;
     modalRef.result.then(() => {
       this.getProjectById(this.projectId);
-    })
+    });
   };
 
   deleteRoom(id, projectId) {
