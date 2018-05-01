@@ -3,6 +3,7 @@ import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {Router} from "@angular/router";
 import {ActivatedRoute} from "@angular/router";
 import {LoginComponent} from "./login/login.component";
+import {CookieService} from "ngx-cookie-service";
 
 @Component({
   selector: 'app-root',
@@ -16,7 +17,8 @@ export class AppComponent {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private modalService: NgbModal) {
+    private modalService: NgbModal,
+    private cookieService: CookieService) {
   }
 
   login() {
@@ -29,6 +31,7 @@ export class AppComponent {
   logout() {
     if(confirm("Are you sure you want to logout?")) {
       this.authenticated = false;
+      this.cookieService.delete('accessToken');
     } else {
       this.authenticated = true;
     }

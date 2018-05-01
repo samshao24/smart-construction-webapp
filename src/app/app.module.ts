@@ -26,6 +26,9 @@ import {RoomDataService} from "./data-service/room-data.service";
 import {ProjectSetupDataService} from "./data-service/project-setup-data.service";
 import {LoginComponent} from "./login/login.component";
 import {OauthTokenService} from "./oauth-service/oauth-token.service";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import {CookieService} from "ngx-cookie-service";
+import {TokenInterceptor} from "./oauth-service/oauth-interceptor";
 
 
 @NgModule({
@@ -56,6 +59,7 @@ import {OauthTokenService} from "./oauth-service/oauth-token.service";
     BrowserModule,
     FormsModule,
     HttpModule,
+    HttpClientModule,
     AppRoutingModule,
     NgbModule.forRoot()
   ],
@@ -64,7 +68,13 @@ import {OauthTokenService} from "./oauth-service/oauth-token.service";
     ProjectDataService,
     RoomDataService,
     ProjectSetupDataService,
-    OauthTokenService
+    OauthTokenService,
+    CookieService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent],
   entryComponents: [

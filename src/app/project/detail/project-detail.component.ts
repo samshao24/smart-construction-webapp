@@ -48,17 +48,17 @@ export class ProjectDetailComponent implements OnInit {
 
   getProjectById(id) {
     this.dataService.getProjectById(id)
-      .then(project => this.project = project);
+      .subscribe(project => this.project = project);
   }
 
   getAllProjectType() {
     this.dataService.getProjectType()
-      .then(projectTypes => this.projectTypes = projectTypes);
+      .subscribe(projectTypes => this.projectTypes = projectTypes);
   }
 
   getAllPaintingMaterial() {
     this.dataService.getPaintingMaterial()
-      .then(paintingMaterials => this.paintingMaterials = paintingMaterials);
+      .subscribe(paintingMaterials => this.paintingMaterials = paintingMaterials);
   }
 
   onSubmit() {

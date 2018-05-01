@@ -3,6 +3,8 @@ import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
 import {Router} from "@angular/router";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {OauthTokenService} from "../oauth-service/oauth-token.service";
+import {OAuthResponse} from "../oauth-service/oauth-response";
+import {CookieService} from "ngx-cookie-service";
 
 @Component({
   selector: 'app-login',
@@ -15,19 +17,27 @@ export class LoginComponent {
   username: string;
   password: string;
   authenticated: boolean;
+  accessToken: string;
   constructor(private router: Router,
               public activeModal: NgbActiveModal,
-              public oauthService: OauthTokenService) {
+              public oauthService: OauthTokenService,
+              public cookieService: CookieService) {
   }
 
   onSubmit() {
     this.submitted = true;
-    if (this.username === 'admin' && this.password === 'password') {
-      this.authenticated = true;
-      this.activeModal.close(this.authenticated);
-    } else {
-      this.oauthService.obtainAccessToken(this.username, this.password);
-      this.authenticated = false;
-    }
+    this.oauthService.obtainAccessToken(this.username, this.password)
+      .subscribe(
+        data => {
+          this.accessToken = data.access_token;
+          if (this.accessToken) {
+            this.authenticated = true;
+            this.cookieService.set('accessToken', this.accessToken);
+            this.activeModal.close(this.authenticated);
+          } else {
+            this.authenticated = false;
+          }
+        }, err => this.authenticated = false
+      );
   }
 }

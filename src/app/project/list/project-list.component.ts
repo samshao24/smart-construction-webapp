@@ -3,6 +3,7 @@ import {ProjectDataService} from '../../data-service/project-data.service';
 import {Component, OnInit} from '@angular/core';
 import {Location} from '@angular/common';
 import {NavigationExtras, Router} from "@angular/router";
+import {CookieService} from "ngx-cookie-service";
 
 @Component({
   selector: 'app-project-list',
@@ -16,7 +17,8 @@ export class ProjectListComponent implements OnInit {
   submitted = false;
   constructor(
     private dataService: ProjectDataService,
-    private router: Router) {}
+    private router: Router,
+    private cookieService: CookieService) {}
 
   ngOnInit(): void {
     this.getProjects();
@@ -25,14 +27,17 @@ export class ProjectListComponent implements OnInit {
   deleteProject(id) {
     if(confirm("Are you sure to delete project")) {
       this.dataService.delete(id)
-        .then(() => {
-          this.getProjects();
-        });
+        .subscribe(
+          () => this.getProjects(),
+          err => console.log(err)
+        )
     }
   }
 
   getProjects() {
-    this.dataService.getProjects()
-      .then(projects => this.projects = projects);
+    this.dataService.getProjects().subscribe(
+      data => this.projects = data,
+      err => console.log(err)
+    )
   }
 }

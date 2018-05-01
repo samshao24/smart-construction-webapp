@@ -1,73 +1,50 @@
 import { Injectable } from '@angular/core';
-import { Headers, Http } from '@angular/http';
 import {Router} from '@angular/router';
 
 import 'rxjs/add/operator/toPromise';
 
 import { Project, ProjectType } from '../model/project';
 import {PaintingMaterial} from "../model/paintingMaterial";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 
 @Injectable()
 export class ProjectDataService {
 
   private projectUrl = 'project';
-  private headers = new Headers({'Content-Type': 'application/json'});
+  private headers = new HttpHeaders({'Content-Type': 'application/json'});
 
-  constructor(private http: Http,
+  constructor(private http: HttpClient,
               private router: Router) {}
 
   // Get all projects
-  getProjects(): Promise<Project[]> {
+  getProjects() {
     const url = this.projectUrl + '/list';
-    return this.http.get(url)
-      .toPromise()
-      .then(response => response.json() as Project[])
-      .catch(this.handleError);
+    return this.http.get<Project[]>(url);
   }
 
-  getProjectType(): Promise<ProjectType[]> {
+  getProjectType() {
     const url = this.projectUrl + '/admin/type';
-    return this.http.get(url)
-      .toPromise()
-      .then(response => response.json() as ProjectType[])
-      .catch(this.handleError);
+    return this.http.get<ProjectType[]>(url);
   }
 
-  getPaintingMaterial(): Promise<PaintingMaterial[]> {
+  getPaintingMaterial() {
     const url = this.projectUrl + '/admin/painting/material/all';
-    return this.http.get(url)
-      .toPromise()
-      .then(response => response.json() as PaintingMaterial[])
-      .catch(this.handleError);
+    return this.http.get<PaintingMaterial[]>(url);
   }
 
   getProjectById(id: number) {
     const url = this.projectUrl + '/detail/' + id;
-    return this.http.get(url)
-      .toPromise()
-      .then(response => response.json() as Project)
-      .catch(this.handleError);
+    return this.http.get<Project>(url);
   }
 
   create(project: Project) {
     const url = this.projectUrl + '/save';
     return this.http
-      .post(url, JSON.stringify(project), {headers : this.headers})
-      .toPromise()
-      .then(() => this.router.navigate(['/project/list']))
-      .catch(this.handleError);
+      .post(url, JSON.stringify(project), {headers : this.headers});
   }
 
   delete(id: number) {
     const url = this.projectUrl + '/delete/' + id;
-    return this.http.delete(url)
-      .toPromise()
-      .then()
-      .catch(this.handleError);
-  }
-
-  private handleError(error: any): Promise<any> {
-    console.error('Error', error);
-    return Promise.reject(error.message || error);
+    return this.http.delete(url);
   }
 }
