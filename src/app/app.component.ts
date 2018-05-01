@@ -32,6 +32,7 @@ export class AppComponent {
     if(confirm("Are you sure you want to logout?")) {
       this.authenticated = false;
       this.cookieService.delete('accessToken');
+      this.router.navigate(['/'])
     } else {
       this.authenticated = true;
     }
