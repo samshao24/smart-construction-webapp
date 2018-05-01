@@ -23,7 +23,7 @@ export class MaterialListComponent implements OnInit {
   }
 
   open() {
-    let materialSetupModal = this.modalService.open(MaterialSetupComponent, {size: "lg"});
+    let materialSetupModal = this.modalService.open(MaterialSetupComponent, {size: "lg", backdrop: 'static', keyboard: false});
     materialSetupModal.result.then(() => {
       this.getAllPaintingMaterial();
     }).catch((error) => {
@@ -34,12 +34,14 @@ export class MaterialListComponent implements OnInit {
   delete(id) {
     if(confirm("Are you sure to delete project")) {
       this.dataService.deletePaintingMaterial(id)
-        .then(() => this.getAllPaintingMaterial());
+        .subscribe(
+          () => this.getAllPaintingMaterial()
+        );
     }
   }
 
   getAllPaintingMaterial() {
     this.dataService.getAllPaintingMaterial()
-      .then(paintingMaterialList => this.paintingMaterialList = paintingMaterialList);
+      .subscribe(data => this.paintingMaterialList = data);
   }
 }

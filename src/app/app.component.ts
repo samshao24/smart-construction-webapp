@@ -4,6 +4,7 @@ import {Router} from "@angular/router";
 import {ActivatedRoute} from "@angular/router";
 import {LoginComponent} from "./login/login.component";
 import {CookieService} from "ngx-cookie-service";
+import {NgbModalOptions} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'app-root',
@@ -22,7 +23,7 @@ export class AppComponent {
   }
 
   login() {
-    let modalRef = this.modalService.open(LoginComponent, {centered: true});
+    let modalRef = this.modalService.open(LoginComponent, {centered: true, backdrop: 'static', keyboard: false});
     modalRef.result.then((result) => {
       this.authenticated = result;
     });

@@ -1,66 +1,44 @@
-import {Headers, Http} from "@angular/http";
 import {Router} from "@angular/router";
 import {Injectable} from "@angular/core";
 import {PaintingMaterial} from "../model/paintingMaterial";
 import {FinancialSetup} from "../model/financialSetup";
+import {HttpHeaders} from "@angular/common/http";
+import {HttpClient} from "@angular/common/http";
 
 @Injectable()
 export class ProjectSetupDataService {
 
   private projectSetupUrl = 'project/admin';
-  private headers = new Headers({'Content-Type': 'application/json'});
+  private headers = new HttpHeaders({'Content-Type': 'application/json'});
 
-  constructor(private http: Http,
-              private router: Router) {}
+  constructor(private http: HttpClient,
+              private router: Router) {
+  }
 
-  getFinancialSetup(): Promise<FinancialSetup> {
+  getFinancialSetup() {
     const url = this.projectSetupUrl + '/painting/financial/setup';
-    return this.http.get(url)
-      .toPromise()
-      .then(response => response.json() as FinancialSetup)
-      .catch(this.handleError);
+    return this.http.get<FinancialSetup>(url);
   }
 
   saveFinancialSetup(financialSetup: FinancialSetup) {
     const url = this.projectSetupUrl + '/painting/financial/save';
-    console.log(financialSetup);
     return this.http
-      .post(url, JSON.stringify(financialSetup), {headers : this.headers})
-      .toPromise()
-      .then()
-      .catch(this.handleError);
+      .post(url, JSON.stringify(financialSetup), {headers: this.headers});
   }
 
-  getAllPaintingMaterial(): Promise<PaintingMaterial[]> {
+  getAllPaintingMaterial() {
     const url = this.projectSetupUrl + '/painting/material/all';
-    return this.http.get(url)
-      .toPromise()
-      .then(response => response.json() as PaintingMaterial[])
-      .catch(this.handleError);
+    return this.http.get<PaintingMaterial[]>(url);
   }
 
   savePaintingMaterial(paintingMaterial: PaintingMaterial) {
     const url = this.projectSetupUrl + '/painting/material/save';
     return this.http
-      .post(url, JSON.stringify(paintingMaterial), {headers : this.headers})
-      .toPromise()
-      .then(() => {
-        this.router.navigate(['/project/setup/material/list'])
-      })
-      .catch(this.handleError);
+      .post(url, JSON.stringify(paintingMaterial), {headers: this.headers});
   }
 
   deletePaintingMaterial(id: number) {
     const url = this.projectSetupUrl + '/painting/material/delete/' + id;
-    return this.http.delete(url)
-      .toPromise()
-      .then(() =>
-        this.router.navigate(['/project/setup/material/list']))
-      .catch(this.handleError);
-  }
-
-  private handleError(error: any): Promise<any> {
-    console.error('Error', error);
-    return Promise.reject(error.message || error);
+    return this.http.delete(url);
   }
 }

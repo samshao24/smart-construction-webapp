@@ -20,21 +20,24 @@ export class FinancialSetupComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log('init');
     this.getFinancialSetup();
   }
 
   saveFinancialSetup() {
     console.log(this.financialSetup);
     this.dataService.saveFinancialSetup(this.financialSetup)
-      .then(() => {
-        this.message = 'Financial Setup Saved and this setup will be locked';
-        this.lock = true;
-    });
+      .subscribe(
+        () => {
+          this.getFinancialSetup();
+          this.message = 'Financial Setup Saved and this setup will be locked';
+          this.lock = true},
+        );
   }
 
   getFinancialSetup() {
-    this.dataService.getFinancialSetup().then(financialSetup => {
+    this.dataService.getFinancialSetup()
+      .subscribe(
+        financialSetup => {
         if (financialSetup != null) {
           this.financialSetup = financialSetup;
           this.lock = true;

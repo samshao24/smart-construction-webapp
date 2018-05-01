@@ -32,7 +32,7 @@ export class ProjectMainComponent implements OnInit {
   }
 
   open(action, room) {
-    const modalRef = this.modalService.open(RoomMainComponent, {size: "lg"});
+    const modalRef = this.modalService.open(RoomMainComponent, {size: "lg", backdrop: 'static', keyboard: false});
     const params = {
       'projectId': this.projectId,
       'action': action,
@@ -54,6 +54,7 @@ export class ProjectMainComponent implements OnInit {
   }
 
   getProjectById(id) {
-    this.projectDataService.getProjectById(id).then(project => this.project = project);
+    this.projectDataService.getProjectById(id)
+      .subscribe(project => this.project = project);
   }
 }

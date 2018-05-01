@@ -22,7 +22,7 @@ export class MaterialSetupComponent implements OnInit {
 
   public save(): void {
     this.dataService.savePaintingMaterial(this.paintingMaterial)
-      .then(() => {
+      .subscribe(() => {
         this.activeModal.close();
       });
   }
