@@ -1,57 +1,36 @@
 import { Injectable } from '@angular/core';
-import { Headers, Http } from '@angular/http';
 import {Router} from '@angular/router';
-
 import 'rxjs/add/operator/toPromise';
 import {Room} from "../model/room";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 
 @Injectable()
 export class RoomDataService {
 
   private roomUrl = 'room';
-  private headers = new Headers({'Content-Type': 'application/json'});
+  private headers = new HttpHeaders({'Content-Type': 'application/json'});
 
-  constructor(private http: Http,
+  constructor(private http: HttpClient,
               private router: Router) {}
 
   getRoomById(id: number) {
     const url = this.roomUrl + '/detail/' + id;
-    return this.http.get(url)
-      .toPromise()
-      .then(response => response.json() as Room)
-      .catch(this.handleError);
+    return this.http.get<Room>(url);
   }
 
   create(room: Room) {
     const url = this.roomUrl + '/save';
     return this.http
-      .post(url, JSON.stringify(room), {headers : this.headers})
-      .toPromise()
-      .then(() => {
-        this.router.navigate(['/project/view', room.projectId])
-      })
-      .catch(this.handleError);
+      .post(url, JSON.stringify(room), {headers : this.headers});
   }
 
   delete(id: number) {
     const url = this.roomUrl + '/delete/' + id;
-    return this.http.delete(url)
-      .toPromise()
-      .then()
-      .catch(this.handleError);
+    return this.http.delete(url);
   }
 
   calculate(room: Room) {
     const url = this.roomUrl + '/calculate';
-    return this.http
-      .post(url, JSON.stringify(room), {headers : this.headers})
-      .toPromise()
-      .then(response => response.json() as Room)
-      .catch(this.handleError);
-  }
-
-  private handleError(error: any): Promise<any> {
-    console.error('Error', error); // for demo purposes only
-    return Promise.reject(error.message || error);
+    return this.http.post<Room>(url, JSON.stringify(room), {headers : this.headers});
   }
 }

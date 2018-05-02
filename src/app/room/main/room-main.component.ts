@@ -49,17 +49,16 @@ export class RoomMainComponent implements OnInit {
 
   calculate() {
     this.dataService.calculate(this.room)
-      .then(res => {
+      .subscribe(res => {
         this.room = res;
       });
-    console.log(this.room);
     this.showCalculation = true;
   }
 
   onSubmit() {
     this.submitted = true;
     this.dataService.create(this.room)
-      .then(() => {
+      .subscribe(() => {
         this.activeModal.close();
       });
   }

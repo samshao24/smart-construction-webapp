@@ -8,6 +8,8 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 export class OauthTokenService {
 
   private accessToken;
+  private clientId = 'admin';
+  private clientSecret = 'admin';
 
   constructor(
     private _router: Router,
@@ -19,14 +21,17 @@ export class OauthTokenService {
     return accessTokenFromCookie;
   }
 
-  obtainAccessToken(clientId, clientSecret) {
+  obtainAccessToken(username, password) {
     let headers = new HttpHeaders({
       'Content-type': 'application/x-www-form-urlencoded',
-      'Authorization': 'Basic '+ btoa(clientId + ":" + clientSecret)
+      'Authorization': 'Basic '+ btoa(this.clientId + ":" + this.clientSecret)
     });
 
     let urlSearchParams = new URLSearchParams();
-    urlSearchParams.set('grant_type', 'client_credentials');
+    urlSearchParams.append('grant_type', 'password');
+    urlSearchParams.append('username', username);
+    urlSearchParams.append('password', password);
+
 
     let body = urlSearchParams.toString();
     let url = "http://localhost:9999/authorization/oauth/token";

@@ -37,7 +37,7 @@ export class ProjectDetailComponent implements OnInit {
           this.project.customer = new Customer;
           this.project.customer.address = new Address;
         }
-        this.projectId = +params['id']; // (+) converts string 'id' to a number
+        this.projectId = +params['id'];
       });
   }
 
@@ -67,6 +67,7 @@ export class ProjectDetailComponent implements OnInit {
   }
 
   save() {
-    this.dataService.create(this.project);
+    this.dataService.create(this.project)
+      .subscribe(() => this.router.navigate(['/project/list']));
   }
 }

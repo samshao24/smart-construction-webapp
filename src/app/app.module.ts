@@ -1,9 +1,8 @@
 import {AppRoutingModule} from './app-routing.module';
 import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, NgModule, NO_ERRORS_SCHEMA} from '@angular/core';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {FormsModule} from '@angular/forms';
-import {HttpModule} from '@angular/http';
 
 import {AppComponent} from './app.component';
 import {CustomerDetailsComponent} from './customer-details/customer-details.component';
@@ -29,6 +28,7 @@ import {OauthTokenService} from "./oauth-service/oauth-token.service";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {CookieService} from "ngx-cookie-service";
 import {TokenInterceptor} from "./oauth-service/oauth-interceptor";
+import {LoadingModule} from "ngx-loading";
 
 
 @NgModule({
@@ -58,10 +58,10 @@ import {TokenInterceptor} from "./oauth-service/oauth-interceptor";
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule,
     HttpClientModule,
     AppRoutingModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    LoadingModule,
   ],
   providers: [
     DataService,
@@ -81,6 +81,6 @@ import {TokenInterceptor} from "./oauth-service/oauth-interceptor";
     RoomMainComponent,
     MaterialSetupComponent,
     LoginComponent
-  ],
+  ]
 })
 export class AppModule {}

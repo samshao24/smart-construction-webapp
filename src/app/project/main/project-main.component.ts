@@ -47,7 +47,7 @@ export class ProjectMainComponent implements OnInit {
   deleteRoom(id, projectId) {
     if(confirm("Are you sure to delete room")) {
       this.roomDataService.delete(id)
-        .then(() => {
+        .subscribe(() => {
           this.getProjectById(projectId);
         })
     }

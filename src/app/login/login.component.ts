@@ -1,9 +1,7 @@
 import {Component} from '@angular/core';
 import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
 import {Router} from "@angular/router";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {OauthTokenService} from "../oauth-service/oauth-token.service";
-import {OAuthResponse} from "../oauth-service/oauth-response";
 import {CookieService} from "ngx-cookie-service";
 
 @Component({
@@ -18,6 +16,7 @@ export class LoginComponent {
   password: string;
   authenticated: boolean;
   accessToken: string;
+  public loading = false;
   constructor(private router: Router,
               public activeModal: NgbActiveModal,
               public oauthService: OauthTokenService,
@@ -26,6 +25,7 @@ export class LoginComponent {
 
   onSubmit() {
     this.submitted = true;
+    this.loading = true;
     this.oauthService.obtainAccessToken(this.username, this.password)
       .subscribe(
         data => {
@@ -37,7 +37,8 @@ export class LoginComponent {
           } else {
             this.authenticated = false;
           }
-        }, err => this.authenticated = false
+        }, err => this.authenticated = false,
+        () => this.loading = false
       );
   }
 }
