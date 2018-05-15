@@ -60,8 +60,8 @@ import {LoadingModule} from "ngx-loading";
     FormsModule,
     HttpClientModule,
     AppRoutingModule,
-    NgbModule.forRoot(),
     LoadingModule,
+    NgbModule.forRoot(),
   ],
   providers: [
     DataService,

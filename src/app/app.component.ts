@@ -4,7 +4,7 @@ import {Router} from "@angular/router";
 import {ActivatedRoute} from "@angular/router";
 import {LoginComponent} from "./login/login.component";
 import {CookieService} from "ngx-cookie-service";
-import {NgbModalOptions} from "@ng-bootstrap/ng-bootstrap";
+import {LoadingModule} from "ngx-loading";
 
 @Component({
   selector: 'app-root',
